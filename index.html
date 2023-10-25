@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de Moneda</title>
+    <!-- Agrega el enlace a la biblioteca de Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Agrega tus propias configuraciones de cliente de Google -->
+    <meta name="google-signin-client_id" content="TU_CLIENT_ID.apps.googleusercontent.com">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        div {
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            color: #555;
+            margin: 20px 0;
+        }
+
+        p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Moneda</h1>
+
+    <div>
+        <label for="conversion">Valor de la conversión:</label>
+        <input type="text" id="conversion" name="conversion">
+    </div>
+
+    <h2>Ejemplos de conversiones</h2>
+    <p>Conversión 1: [Ejemplo de conversión aumentando el doble del valor inicial]</p>
+    <p>Conversión 2: [Ejemplo de conversión aumentando el doble del valor inicial]</p>
+
+    <h2>Gráfica de tasa de cambio</h2>
+    <!-- Código para la gráfica de la tasa de cambio -->
+
+    <h2>Visualización de símbolos de moneda</h2>
+    <p>Símbolo de Moneda 1: [$]</p>
+    <p>Símbolo de Moneda 2: [€ ]</p>
+</body>
+        <h2>Login/Registro</h2>
+        <!-- Botón de inicio de sesión de Google -->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </div>
+
+    <script>
+        function onSignIn(googleUser) {
+            // El usuario ha iniciado sesión correctamente, puedes manejar la lógica aquí
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId());
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+            // Aquí puedes realizar más acciones como redirigir a una página de inicio de sesión exitosa, etc.
+        }
+    </script>
+</body>
+
+</html>
