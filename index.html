@@ -1,84 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambio de Moneda</title>
-    <!-- Agrega el enlace a la biblioteca de Google Sign-In -->
+    link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <title>COINCRAFT</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- Agrega tus propias configuraciones de cliente de Google -->
     <meta name="google-signin-client_id" content="TU_CLIENT_ID.apps.googleusercontent.com">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        div {
-            margin: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        h2 {
-            color: #555;
-            margin: 20px 0;
-        }
-
-        p {
-            color: #777;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Conversor de Moneda</h1>
-
-    <div>
-        <label for="conversion">Valor de la conversión:</label>
-        <input type="text" id="conversion" name="conversion">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <img src="logo.png" alt="Logo" width="107" height="90" class="d-inline-block align-text-top">
+            <h1>COINCRAFT</h1>
+            <span class="login-register">Login/Registro</span>
+        </div>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </div>
+    </nav>
+    <div id="container">
+        <h2>Cambio de Moneda</h2>
+        <form>
+            <input type="number" placeholder="Cantidad a Cambiar" required>
+            <select required>
+                <option value="USD">USD</option>
+            </select>
+            <select required>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="COP">COP</option>
+                <option value="ARS">ARS</option>
+                <option value="MXN">MXN</option>
+                <option value="PKR">PKR</option>
+                <option value="INR">INR</option>
+                <option value="CAD">CAD</option>
+                <option value="AUD">AUD</option>
+                <option value="AED">AED</option>
+                <option value="ILS">ILS</option>
+                <option value="RUB">RUB</option>
+                <option value="CHF">CHF</option>
+                <option value="JPY">JPY</option>
+                <option value="CNY">CNY</option>
+                <option value="BRL">BRL</option>
+            </select>
+            <button type="submit">Calcular Cambio</button>
+        </form>
     </div>
-
     <h2>Ejemplos de conversiones</h2>
     <p>Conversión 1: [Ejemplo de conversión aumentando el doble del valor inicial]</p>
-    <p>Conversión 2: [Ejemplo de conversión aumentando el doble del valor inicial]</p>
+    <p>Conversión 2: [Ejemplo de conversión disminuyendo el 20% del valor inicial]</p>
 
     <h2>Gráfica de tasa de cambio</h2>
-    <!-- Código para la gráfica de la tasa de cambio -->
 
     <h2>Visualización de símbolos de moneda</h2>
     <p>Símbolo de Moneda 1: [$]</p>
-    <p>Símbolo de Moneda 2: [€ ]</p>
-</body>
-        <h2>Login/Registro</h2>
-        <!-- Botón de inicio de sesión de Google -->
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    </div>
-
+    <p>Símbolo de Moneda 2: [€]</p>
+    <p>Símbolo de Moneda 3: [£]</p>
+    <footer>
+        <p>&copy; 2023 Página COINCRAFT.</p>
+    </footer>
     <script>
         function onSignIn(googleUser) {
-            // El usuario ha iniciado sesión correctamente, puedes manejar la lógica aquí
             var profile = googleUser.getBasicProfile();
             console.log('ID: ' + profile.getId());
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail());
-            // Aquí puedes realizar más acciones como redirigir a una página de inicio de sesión exitosa, etc.
         }
+    </script>
+    <script>
+        function fetchData() {
+            fetch('http://localhost:8000/data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        }
+
+        fetchData();
     </script>
 </body>
 
