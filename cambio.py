@@ -35,8 +35,8 @@ def convert_currency():
     url = f'https://api.currencyfreaks.com/v2.0/rates/latest?apikey=e2277eb0e898401e839242d24c90833d&symbols=EUR,GBP,COP,ARS,MXN,PKR,INR,CAD,AUD,AED,ILS,RUB,CHF,JPY,CNY,BRL&base=USD'
     response = requests.get(url)
     data = response.json()
-    result = data['result']
-    return render_template('result.html', result=result)
+    result = data['result'] 
+    return render_template('index.html', result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)
