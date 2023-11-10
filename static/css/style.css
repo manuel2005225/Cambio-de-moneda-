@@ -86,6 +86,16 @@ button:hover {
     background-color: #45a049;
 }
 
+#resultados {
+    margin-top: 20px;
+}
+
+#result {
+    font-family: 'Garamond', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
 footer {
     text-align: center;
     position: fixed;
